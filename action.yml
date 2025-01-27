@@ -12,6 +12,8 @@ inputs:
 runs:
   using: composite
   steps:
+    - run: echo ${{ runner.arch }}
+      shell: bash
     - name: Install noir
       run: |
         set -eou pipefail
@@ -20,6 +22,8 @@ runs:
           _target_arch=windows-x86_64
         elif [ "${{ runner.os }}" == "macOS" ]; then
           _target_arch=darwin-x86_64
+        elif [ "${{ runner.arch }}" == "ARM64" ]; then
+          _target_arch=linux-aarch64
         else
           _target_arch=linux-x86_64
         fi
