@@ -12,6 +12,9 @@ inputs:
 runs:
   using: composite
   steps:
+    - run: echo ${{ runner }}
+      shell: bash
+
     - name: Install noir
       run: |
         set -eou pipefail
